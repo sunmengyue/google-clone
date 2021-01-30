@@ -4,15 +4,21 @@ import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
 import MicRoundedIcon from '@material-ui/icons/MicRounded';
 import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
+import { useStateValue } from './StateProvider';
+import { actionTypes } from '../reducer';
 
 function Search({ hideButtons = false }) {
+  const [state, dispatch] = useStateValue();
   const [searchTerm, setSearchTerm] = useState('');
   const history = useHistory();
 
   const search = (e) => {
     e.preventDefault();
     console.log('you hit search');
-
+    dispatch({
+      type: actionTypes.SET_SEARCH_TERM,
+      term: searchTerm,
+    });
     history.push('/search');
   };
   return (
