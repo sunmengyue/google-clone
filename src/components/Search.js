@@ -5,7 +5,7 @@ import MicRoundedIcon from '@material-ui/icons/MicRounded';
 import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
 
-function Search() {
+function Search({ hideButtons = false }) {
   const [searchTerm, setSearchTerm] = useState('');
   const history = useHistory();
 
@@ -25,12 +25,29 @@ function Search() {
         />
         <MicRoundedIcon />
       </div>
-      <div className='search__buttons'>
-        <Button onClick={search} variant='outlined' type='submit'>
-          Google Search
-        </Button>
-        <Button variant='outlined'>I am feeling lucky</Button>
-      </div>
+
+      {!hideButtons ? (
+        <div className='search__buttons'>
+          <Button onClick={search} variant='outlined' type='submit'>
+            Google Search
+          </Button>
+          <Button variant='outlined'>I am feeling lucky</Button>
+        </div>
+      ) : (
+        <div className='search__buttons'>
+          <Button
+            className='search__buttonsHidden'
+            onClick={search}
+            variant='outlined'
+            type='submit'
+          >
+            Google Search
+          </Button>
+          <Button className='search__buttonsHidden' variant='outlined'>
+            I am feeling lucky
+          </Button>
+        </div>
+      )}
     </form>
   );
 }
