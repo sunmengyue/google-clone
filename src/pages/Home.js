@@ -1,4 +1,5 @@
 import React from 'react';
+import Search from '../components/Search';
 import { Link } from 'react-router-dom';
 import './Home.css';
 import AppsOutlinedIcon from '@material-ui/icons/AppsOutlined';
@@ -19,7 +20,15 @@ function Home() {
           <AccountCircleRoundedIcon />
         </div>
       </div>
-      <div className='home__body'></div>
+      <div className='home__body'>
+        <img
+          src='https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_160x56dp.png'
+          alt='google logo'
+        />
+        <div className='home__inputContainer'>
+          <Search />
+        </div>
+      </div>
     </div>
   );
 }
